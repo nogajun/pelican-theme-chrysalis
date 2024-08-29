@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="{{ DEFAULT_LANG|default('ja') }}">
+
+<head>
+  {% include "head.html" %}
+</head>
+
+<body>
+  <!-- header -->
+  {% include "header.html" %}
+
+  <div class="container-lg px-md-3 py-3 py-lg-4 my-0 my-xl-4 bg-white shadow-sm">
+    <div class="row row-cols-1 row-cols-xl-2">
+      <!-- main -->
+      <main class="col col-xl-8">
+        {% block content %}
+        {% endblock content %}
+      </main>
+
+      <!-- sidebar -->
+      <aside class="col col-xl-4 sidebar">
+        {% include "sidebar.html" %}
+      </aside>
+    </div>
+  </div>
+
+  <!-- footer -->
+  {% include "footer.html" %}
+
+  <script defer src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/bootstrap.min.js"></script>
+</body>
+
+</html>

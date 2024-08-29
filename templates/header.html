@@ -1,0 +1,48 @@
+<header class="shadow header">
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{ SITEURL }}/">
+        {% if SITELOGO %}
+        <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/{{SITELOGO}}" alt="{{ SITENAME }}" width="30">
+        {% endif %}
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="{{ SITEURL }}/">Home</a></li>
+          {% if pages %}
+            {% for page in pages %}
+              <li class="nav-item"><a class="nav-link" href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
+            {% endfor %}
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- title -->
+  <div class="py-3 py-lg-5 text-white text-center">
+    <h1 class="display-5 fw-bolder">
+      <a href="{{ SITEURL }}/" class="text-decoration-none text-white">{{ SITENAME }}</a>
+    </h1>
+    {% if SITESUBTITLE %}<p class="lead">{{ SITESUBTITLE }}</p>{% endif %}
+  </div>
+
+  <!-- static page menu -->
+  <aside class="text-center text-uppercase fw-bold header__static_page_menu">
+    <nav class="container-lg">
+      <ul class="nav nav-justified">
+        {% for cat, null in categories %}
+          <li class="nav-item py-1 px-3 py-md-3">
+            <a href="{{ SITEURL }}/{{ cat.url }}" class="d-block text-white text-nowrap">{{ cat }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </aside>
+
+</header>

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row row-cols-1 my-1 my-md-0 mx-md-2">
+  <div class="col">
+
+    <article class="entry">
+      <!-- entry header -->
+      <header class="entry__header">
+        <p class="entry__meta">
+          <time datetime="{{ page.date.isoformat() }}" class="p-1 me-1 entry__date">{{ page.locale_date }}</time>
+          <span class="entry__author">{{ page.author }}</span>
+        </p>
+        <h1 class="h3 fw-bold entry__title">{{ page.title }}</h1>
+        <!-- Cover image -->
+        {% if page.cover %}
+        <figure>
+          <picture>
+            <img src="{{ attach }}/images/{{ page.cover }}" class="img-fluid shadow entry__cover" width="888px"
+              height="500" alt="">
+          </picture>
+        </figure>
+        {% endif %}
+        <!-- share button -->
+        {% include "sharebutton.html" %}
+      </header>
+      <!-- entry contents -->
+      <section class="entry__content">
+        <!-- Full content -->
+        {{ page.content }}
+        <!-- share button -->
+        {% include "sharebutton.html" %}
+      </section>
+
+      <!-- entry footer -->
+      <footer class="text-end entry__footer">
+        <ul class="d-inline-flex list-unstyled">
+          <!-- tags -->
+          {% if page.tags %}
+            {% for tag in page.tags %}
+            <li class="border rounded p-1 mx-1 entry__tags">
+              <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+            </li>
+            {% endfor %}
+          {% endif %}
+        </ul>
+      </footer>
+
+    </article>
+
+  </div>
+</div>
+{% endblock content %}

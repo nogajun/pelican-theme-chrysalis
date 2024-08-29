@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row row-cols-1 row-cols-md-2 gx-0 gx-md-3">
+  {% for article in articles_page.object_list %}
+  <!-- card -->
+  <div class="col mb-2 mb-md-4">
+    <article class="card">
+      <header class="position-relative">
+        <img src="{% if article.cover %}{{ attach }}/images/{{ article.cover}}{% else %}{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/noimg.webp{% endif %}" class="img-fluid card-img-top" width="416px" height="234px">
+        <span class="position-absolute top-0 end-0 rounded-1 card__category">{{ article.category }}</span>
+      </header>
+      <div class="card-body">
+        <section>
+          <h2 class="card-title h5 fw-bold pb-2"><a href="{{ SITEURL }}/{{ article.url }}" class="stretched-link">{{article.title }}</a></h2>
+          <p class="card-text">{{ article.content|striptags|truncate(100,true,"...",0) }}</p>
+        </section>
+        <footer class="position-absolute bottom-0 end-0 text-muted card__footer">
+          <time datetime="{{ article.date.isoformat() }}" class="me-2 card__date">{{ article.locale_date }}</time>
+          <span class="me-2 card__author">{{ article.author }}</span>
+        </footer>
+      </div>
+    </article>
+  </div>
+  {% endfor %}
+</div>
+{% include "pagenation.html" %}
+{% endblock content %}

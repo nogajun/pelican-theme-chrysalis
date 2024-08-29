@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row row-cols-1 my-1 my-md-0 mx-md-2">
+  <div class="col">
+
+    <article class="entry">
+      <!-- entry header -->
+      <header class="entry__header">
+        <p class="entry__meta">
+          <!-- category -->
+          {% if article.category %}
+            <span class="me-1 entry__categories">
+              <a href="{{ SITEURL }}/{{ category.url }}">{{ article.category }}</a>
+            </span>
+          {% endif %}
+          <time datetime="{{ article.date.isoformat() }}" class="p-1 me-1 entry__date">{{ article.locale_date }}</time>
+          <span class="entry__author">{{ article.author }}</span>
+        </p>
+        <h1 class="h3 fw-bold entry__title">{{ article.title }}</h1>
+        <!-- Cover image -->
+        {% if article.cover %}
+          <figure>
+            <picture>
+              <img src="{{ attach }}/images/{{ article.cover }}" class="img-fluid shadow entry__cover" width="888px" height="500" alt="">
+            </picture>
+          </figure>
+        {% endif %}
+        <!-- share button -->
+        {% include "sharebutton.html" %}
+      </header>
+      <!-- entry contents -->
+      <section class="entry__content">
+        <!-- Full content -->
+        {{ article.content }}
+        <!-- share button -->
+        {% include "sharebutton.html" %}
+      </section>
+
+      <!-- entry footer -->
+      <footer class="text-end entry__footer">
+        <ul class="d-inline-flex list-unstyled">
+          <!-- category -->
+          {% if article.category %}
+            <li class="border rounded p-1 mx-1 entry__categories">
+              <a href="{{ SITEURL }}/{{ category.url }}">{{ article.category }}</a>
+            </li>
+          {% endif %}
+          <!-- tags -->
+          {% if article.tags %}
+            {% for tag in article.tags %}
+              <li class="border rounded p-1 mx-1 entry__tags">
+                <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+              </li>
+            {% endfor %}
+          {% endif %}
+        </ul>
+      </footer>
+
+    </article>
+
+  </div>
+</div>
+{% endblock content %}

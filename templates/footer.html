@@ -1,0 +1,13 @@
+<footer class="container-fluid mb-0 py-4 footer">
+  <div class="container-lg text-center">
+    <p class="text-white">{% if FOOTER_TEXT %}{{ FOOTER_TEXT }}{% endif %}<span class="">Powered by <a target="_blank"
+          class="text-white" href="https://getpelican.com/">Pelican</a></span></p>
+    <!-- Social Networks -->
+    <ul class="d-inline-flex list-unstyled justify-content-center">
+      {% for name, link in SOCIAL %}
+      <li class="m-1"><a href="{{ link }}" target="_blank" class="text-white"><i class="bi bi-{{ name|lower }}"></i></a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</footer>

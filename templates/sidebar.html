@@ -1,0 +1,55 @@
+<!-- pages -->
+<div class="plugin plugin-static-pages">
+  <h2 class="plugin-label">menu</h2>
+  <div class="plugin-content">
+    <ul>
+      {% for page in pages %}
+      <li class="parent">
+        <a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<!-- categories -->
+<div class="plugin plugin-categories">
+  <h2 class="plugin-label">Categories</h2>
+  <div class="plugin-content">
+    <ul>
+      {% for cat, null in categories|sort %}
+      <li>
+        <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<!-- tags -->
+<div class="plugin plugin-tags">
+  <h2 class="plugin-label">Tags</h2>
+  <div class="plugin-content">
+    <ul>
+      {% for tag in tags|sort %}
+      <li>
+        <a href="{{ SITEURL }}/{{ tag.0.url }}">{{ tag.0 }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<!-- links -->
+<div class="plugin plugin-pages">
+  <h2 class="plugin-label">links</h2>
+  <div class="plugin-content">
+    <ul>
+      {% for name, links in LINKS|sort %}
+      <li>
+        <a href="{{ link }}">{{ name }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
